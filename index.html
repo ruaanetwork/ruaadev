@@ -8,6 +8,8 @@
     <meta name="msapplication-TileColor" content="#0a1628">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="format-detection" content="telephone=no">
     <meta name="color-scheme" content="dark light">
     <meta name="author" content="ruaa.dev">
     <meta name="keywords" content="ruaa, ruaa.dev, tarqim, tarqim.ruaa.dev, viza-med, viza-med.com, development, tech, telegram">
@@ -32,6 +34,7 @@
     <meta property="og:image:width" content="120">
     <meta property="og:image:height" content="120">
     <meta property="og:image:alt" content="ruaa.dev logo">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:site_name" content="ruaa.dev">
 
     <!-- Twitter / X -->
@@ -39,6 +42,7 @@
     <meta name="twitter:title" content="ruaa.dev — Professional Development Team">
     <meta name="twitter:description" content="Professional developers with 10+ years of experience — home of Tarqim and Viza-Med.">
     <meta name="twitter:image" content="https://ruaa.dev/logo.jpg">
+    <meta name="twitter:image:alt" content="ruaa.dev logo">
 
     <!-- Apple -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,9 +51,10 @@
     <title>ruaa.dev — Professional Development Team</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/logo.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Self-hosted fonts (Rubik + Tajawal, from viza-med) -->
+    <link rel="preload" href="fonts/rubik-ttf/Rubik-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/tajawal-ttf/Tajawal-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="fonts/fonts.css">
     <script>
         /* Apply saved/preferred language + theme before first paint (no flash) */
         (function () {
@@ -101,7 +106,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Rubik', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text-primary);
             min-height: 100svh;
@@ -117,7 +122,7 @@
 
         /* ── Arabic typography ── */
         html[lang="ar"] body {
-            font-family: 'Tajawal', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Tajawal', 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         html[lang="ar"] .overline,
@@ -510,6 +515,10 @@
             animation: fadeIn 0.6s ease-out 0.45s both;
         }
 
+        .pro-badge span {
+            white-space: pre-line;
+        }
+
         .pro-badge svg {
             width: 19px;
             height: 19px;
@@ -838,9 +847,72 @@
             transform: scaleX(-1) translateX(3px);
         }
 
+        /* ── Coming soon placeholder cards ── */
+        .card-soon {
+            border-style: dashed;
+            cursor: default;
+        }
+
+        .card-soon:hover {
+            transform: none;
+            background: var(--surface);
+        }
+
+        .card-soon .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+        }
+
+        .card-soon .card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card-soon .card-title {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .card-soon .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        /* sky */
+        .card-soon-sky .card-icon {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+        }
+
+        .card-soon-sky .card-icon svg {
+            fill: #38bdf8;
+        }
+
+        .card-soon-sky:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        /* grape red */
+        .card-soon-grape .card-icon {
+            background: rgba(225, 29, 72, 0.08);
+            border: 1px solid rgba(225, 29, 72, 0.18);
+        }
+
+        .card-soon-grape .card-icon svg {
+            fill: #fb7185;
+        }
+
+        .card-soon-grape:hover {
+            border-color: rgba(225, 29, 72, 0.3);
+        }
+
         /* ── "Book your spot" CTA Card ── */
         .card-cta {
             grid-column: 1 / -1;
+            max-width: 480px;
+            width: 100%;
+            margin-inline: auto;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -1120,6 +1192,98 @@
             }
         }
 
+        /* ── Desktop mode layout ── */
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 10.5rem 2.5rem 4rem;
+            }
+
+            .hero-content {
+                gap: 2.25rem;
+            }
+
+            .logo-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .logo {
+                font-size: 5.75rem;
+                margin-top: -1.5rem;
+            }
+
+            .pro-badge {
+                max-width: 1020px;
+                font-size: 1.35rem;
+                line-height: 1.55;
+                padding: 1rem 1.7rem;
+                border-radius: 28px;
+            }
+
+            .top-bar {
+                padding: 2rem 3rem;
+            }
+
+            .achievements {
+                padding: 3rem 2.5rem 7rem;
+            }
+
+            .achievements-inner {
+                max-width: 1080px;
+            }
+
+            .achievements-head {
+                gap: 1.1rem;
+            }
+
+            .overline {
+                font-size: 0.92rem;
+            }
+
+            .achievements-title {
+                font-size: 3.1rem;
+            }
+
+            .achievements-sub {
+                font-size: 1.25rem;
+                max-width: 640px;
+            }
+
+            /* Two product cards side by side, CTA spans full width */
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin-top: 3.5rem;
+            }
+
+            .card {
+                padding: 2rem;
+                gap: 1.25rem;
+            }
+
+            .card-icon {
+                width: 72px;
+                height: 72px;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+            }
+
+            .card-desc {
+                font-size: 0.95rem;
+            }
+
+            /* CTA card: centered, capped width so it doesn't stretch edge to edge */
+            .card-cta {
+                padding: 1.75rem 2.25rem;
+            }
+
+            .card-cta .card-title {
+                font-size: 1.5rem;
+            }
+        }
+
         @media (max-width: 600px) {
             .logo-img {
                 width: 90px;
@@ -1295,7 +1459,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-top">
-                            <span class="card-title">Viza-Med</span>
+                            <span class="card-title" data-i18n="vizamedName">Viza-Med</span>
                             <span class="live-dot" aria-hidden="true"></span>
                         </div>
                         <span class="card-domain">viza-med.com</span>
@@ -1308,6 +1472,31 @@
                         </span>
                     </div>
                 </a>
+
+                <!-- Coming soon placeholders -->
+                <div class="card card-soon card-soon-sky" aria-label="Coming soon">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-title" data-i18n="comingSoon">Coming soon</span>
+                        <p class="card-desc" data-i18n="soonDesc">A new project is in the works.</p>
+                    </div>
+                </div>
+
+                <div class="card card-soon card-soon-grape" aria-label="Coming soon">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-title" data-i18n="comingSoon">Coming soon</span>
+                        <p class="card-desc" data-i18n="soonDesc">A new project is in the works.</p>
+                    </div>
+                </div>
 
                 <!-- Book your spot -->
                 <div class="card card-cta">
@@ -1363,11 +1552,11 @@
             <div class="footer-bottom">
                 <span>&copy; 2026</span>
                 <span class="footer-separator"></span>
-                <a href="https://t.me/ruaadev" target="_blank" rel="noopener noreferrer">@ruaadev</a>
+                <a href="https://t.me/ruaadev" target="_blank" rel="noopener noreferrer" dir="ltr">@ruaadev</a>
                 <span class="footer-separator"></span>
-                <span class="version">v0.1.6</span>
+                <span class="version">v0.1.8</span>
                 <span class="footer-separator"></span>
-                <span data-i18n="lastUpdated">Updated Oct 4, 2026</span>
+                <span data-i18n="lastUpdated">Updated Oct 8, 2026</span>
             </div>
         </div>
     </footer>
@@ -1380,12 +1569,13 @@
         "name": "ruaa.dev",
         "url": "https://ruaa.dev",
         "description": "ruaa.dev — a team of highly skilled, professionally trained developers with over 10 years of experience. Home of Tarqim and Viza-Med.",
+        "inLanguage": ["en", "ar"],
         "publisher": {
             "@type": "Organization",
             "name": "ruaa.dev",
             "url": "https://ruaa.dev",
             "slogan": "Professional developers — highly skilled, highly trained, with 10+ years of experience.",
-            "sameAs": ["https://t.me/ruaadev"]
+            "sameAs": ["https://t.me/ruaadev", "https://tarqim.ruaa.dev", "https://viza-med.com"]
         },
         "about": {
             "@type": "ItemList",
@@ -1412,9 +1602,12 @@
                     
                     'tarqimName': 'Tarqim',
                     'tarqimDesc': 'A smart document numbering tool.',
+                    'vizamedName': 'Viza-Med',
                     'vizamedDesc': 'A professional medical platform.',
                     'visit': 'Visit site',
                     'visit2': 'Visit site',
+                    'comingSoon': 'Coming soon',
+                    'soonDesc': 'A new project is in the works.',
                     'ctaTitle': 'Book your spot',
                     'ctaDesc': "Let's build your next project together.",
                     'ctaLink': 'Start a chat',
@@ -1426,19 +1619,22 @@
                     'joinTeam': 'Join our team',
                     'themeLight': 'Switch to light theme',
                     'themeDark': 'Switch to dark theme',
-                    'lastUpdated': 'Updated Oct 4, 2026'
+                    'lastUpdated': 'Updated Oct 8, 2026'
                 },
                 ar: {
-                    'proStatement': 'مطوّرون محترفون — مهارات عالية وتدريب متقن وخبرة تتجاوز 10 سنوات.',
+                    'proStatement': 'مطوّرون متخصصون\nمهارات عالية وتدريب متقن وخبرة تتجاوز 10 سنوات.',
                     'achOverline': 'إنجازاتنا',
-                    'achTitle': 'أعمال نفتخر بصناعتها',
+                    'achTitle': 'أعمال نفتخر بتطويرها',
                     'achSub': 'منتجات حقيقية صمّمناها وبنيناها وأطلقناها.',
                     
                     'tarqimName': 'ترقيم',
                     'tarqimDesc': 'أداة ترقيم مستندات ذكية.',
+                    'vizamedName': 'فيزاميد',
                     'vizamedDesc': 'منصة طبية احترافية.',
                     'visit': 'زيارة الموقع',
                     'visit2': 'زيارة الموقع',
+                    'comingSoon': 'قريبًا',
+                    'soonDesc': 'مشروع جديد في الطريق.',
                     'ctaTitle': 'احجز مكانك',
                     'ctaDesc': 'لنبنِ مشروعك القادم معًا.',
                     'ctaLink': 'ابدأ محادثة',
@@ -1450,7 +1646,7 @@
                     'joinTeam': 'انضم إلى فريقنا',
                     'themeLight': 'التبديل إلى الوضع الفاتح',
                     'themeDark': 'التبديل إلى الوضع الداكن',
-                    'lastUpdated': 'آخر تحديث: 4 أكتوبر 2026'
+                    'lastUpdated': 'آخر تحديث: 8 أكتوبر 2026'
                 }
             };
 
