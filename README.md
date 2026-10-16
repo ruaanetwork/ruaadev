@@ -4,6 +4,7 @@ The official website of the ruaa.dev team.
 
 ## Achievements
 
+- **Qody** — a browser-only QR code studio · [qody.ruaa.dev](https://qody.ruaa.dev) · [qr.ruaa.dev](https://qr.ruaa.dev)
 - **Tarqim** — a smart document numbering tool · [tarqim.ruaa.dev](https://tarqim.ruaa.dev)
 - **Viza-Med** — a professional medical platform · [viza-med.com](https://viza-med.com)
 

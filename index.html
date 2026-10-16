@@ -12,7 +12,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="color-scheme" content="dark light">
     <meta name="author" content="ruaa.dev">
-    <meta name="keywords" content="ruaa, ruaa.dev, tarqim, tarqim.ruaa.dev, viza-med, viza-med.com, development, tech, telegram">
+    <meta name="keywords" content="ruaa, ruaa.dev, qody, qody.ruaa.dev, qr code, tarqim, tarqim.ruaa.dev, viza-med, viza-med.com, development, tech, telegram">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="7 days">
     <meta name="language" content="en">
@@ -88,6 +88,7 @@
             --accent-glow: rgba(14, 165, 233, 0.2);
             --tarqim-soft: #4ade80;
             --vizamed-soft: #5eead4;
+            --qody-soft: #fbbf24;
             --glass-border: rgba(255, 255, 255, 0.08);
             --radius-lg: 24px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,6 +147,7 @@
             --accent-glow: rgba(2, 132, 199, 0.18);
             --tarqim-soft: #15803d;
             --vizamed-soft: #0f766e;
+            --qody-soft: #b45309;
             --glass-border: rgba(15, 40, 70, 0.1);
         }
 
@@ -701,6 +703,11 @@
             box-shadow: 0 14px 44px rgba(61, 184, 163, 0.13);
         }
 
+        .card-qody:hover {
+            border-color: rgba(251, 191, 36, 0.32);
+            box-shadow: 0 14px 44px rgba(217, 119, 6, 0.14);
+        }
+
         .card-icon {
             width: 64px;
             height: 64px;
@@ -721,6 +728,13 @@
             border: 1px solid rgba(94, 234, 212, 0.2);
         }
 
+        /* The mark is a filled rounded square, so the tile behind it is only a
+           hairline — a tinted plate behind an amber logo just muddies it. */
+        .card-qody .card-icon {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.24);
+        }
+
         .card-icon img {
             width: 100%;
             height: 100%;
@@ -735,6 +749,13 @@
             object-fit: contain;
             padding: 11px;
             filter: brightness(1.1);
+        }
+
+        /* `contain`, not `cover`: the logo has transparent corners and cover
+           would crop the rounded square to fill, which cuts the mark off. */
+        .card-qody .card-icon img {
+            object-fit: contain;
+            padding: 6px;
         }
 
         .card-body {
@@ -805,6 +826,10 @@
 
         .card-vizamed .card-domain {
             color: var(--vizamed-soft);
+        }
+
+        .card-qody .card-domain {
+            color: var(--qody-soft);
         }
 
         .card-desc {
@@ -1431,6 +1456,27 @@
             </div>
 
             <div class="cards">
+                <!-- Qody -->
+                <a class="card card-qody" href="https://qody.ruaa.dev" target="_blank" rel="noopener noreferrer">
+                    <div class="card-icon">
+                        <img src="qody-logo.png" alt="Qody logo" width="256" height="256" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-top">
+                            <span class="card-title" data-i18n="qodyName">Qody</span>
+                            <span class="live-dot" aria-hidden="true"></span>
+                        </div>
+                        <span class="card-domain">qody.ruaa.dev</span>
+                        <p class="card-desc" data-i18n="qodyDesc">A browser-only QR code studio.</p>
+                        <span class="card-link">
+                            <span data-i18n="visit">Visit site</span>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
                 <!-- Tarqim -->
                 <a class="card card-tarqim" href="https://tarqim.ruaa.dev" target="_blank" rel="noopener noreferrer">
                     <div class="card-icon">
@@ -1575,14 +1621,15 @@
             "name": "ruaa.dev",
             "url": "https://ruaa.dev",
             "slogan": "Professional developers — highly skilled, highly trained, with 10+ years of experience.",
-            "sameAs": ["https://t.me/ruaadev", "https://tarqim.ruaa.dev", "https://viza-med.com"]
+            "sameAs": ["https://t.me/ruaadev", "https://qody.ruaa.dev", "https://tarqim.ruaa.dev", "https://viza-med.com"]
         },
         "about": {
             "@type": "ItemList",
             "name": "ruaa.dev portfolio",
             "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Tarqim", "url": "https://tarqim.ruaa.dev" },
-                { "@type": "ListItem", "position": 2, "name": "Viza-Med", "url": "https://viza-med.com" }
+                { "@type": "ListItem", "position": 1, "name": "Qody", "url": "https://qody.ruaa.dev" },
+                { "@type": "ListItem", "position": 2, "name": "Tarqim", "url": "https://tarqim.ruaa.dev" },
+                { "@type": "ListItem", "position": 3, "name": "Viza-Med", "url": "https://viza-med.com" }
             ]
         }
     }
@@ -1600,6 +1647,8 @@
                     'achTitle': "Work we're proud of",
                     'achSub': "Real products we've designed, built, and launched.",
                     
+                    'qodyName': 'Qody',
+                    'qodyDesc': 'A browser-only QR code studio.',
                     'tarqimName': 'Tarqim',
                     'tarqimDesc': 'A smart document numbering tool.',
                     'vizamedName': 'Viza-Med',
@@ -1627,6 +1676,8 @@
                     'achTitle': 'أعمال نفتخر بتطويرها',
                     'achSub': 'منتجات حقيقية صمّمناها وبنيناها وأطلقناها.',
                     
+                    'qodyName': 'كودي',
+                    'qodyDesc': 'استوديو لرموز QR يعمل في المتصفح.',
                     'tarqimName': 'ترقيم',
                     'tarqimDesc': 'أداة ترقيم مستندات ذكية.',
                     'vizamedName': 'فيزاميد',
